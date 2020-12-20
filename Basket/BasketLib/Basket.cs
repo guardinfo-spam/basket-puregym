@@ -106,6 +106,10 @@ namespace BasketLib
             var applicableItem = this.ProductItems.Where(p => p.Product.Category.Equals(this.OfferVoucher.Category)).FirstOrDefault();
             if (applicableItem == default) return currentTotal;
 
+            //at this point we have an applicable item so we will deduct the voucher up to the value of the item itself without going over it.
+
+            if (this.OfferVoucher.Value >= applicableItem.Product.Cost) return currentTotal - applicableItem.Product.Cost;
+
             return currentTotal - this.OfferVoucher.Value;
         }
 
