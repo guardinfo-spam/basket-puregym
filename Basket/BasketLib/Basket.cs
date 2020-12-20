@@ -18,13 +18,20 @@ namespace BasketLib
             this.GiftVouchers = new List<GiftVoucher>();
         }
         
-        public float CalculateValue()
+        public decimal CalculateValue()
         {
             if (this.ProductItems.Count == 0)
                 return 0;
 
-            else
-                return 0;
+            decimal totalValue = 0;
+            
+            //naive first implementation . calculate the value of all products in the basket;
+            foreach ( var product in this.ProductItems)
+            {
+                totalValue += product.Product.Cost * product.Quantity;
+            }
+
+            return totalValue;
         }
 
     }

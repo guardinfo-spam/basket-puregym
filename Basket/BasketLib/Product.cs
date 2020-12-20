@@ -4,6 +4,6 @@
     {
         public string Name { get; set; }
 
-        public float Cost { get; set; }
+        public decimal Cost { get; set; }
     }
 }
